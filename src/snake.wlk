@@ -1,5 +1,5 @@
 import wollok.game.*
-
+import direcciones.*
 
 class Segmento {
 	var property segAnterior = null
@@ -17,12 +17,12 @@ object snake {
 	// derecha = 1, izquierda = -1, arriba = 2, abajo = -2
 	// x ahora lo hardcodeo, dsps estaria bueno definir objetos o algo
 	// dejo asi para poder calcular cuando las direcciones son opuestas
-	var property direccion = 1
+	var property direccion = derecha
 	
 	const property segmentos = [cabeza]
 	
 	method direccion(dir) {
-		if (dir + direccion != 0) {
+		if (direccion.puedeMoverseHacia(dir)) {
 			direccion = dir
 		}
 	}
@@ -34,13 +34,13 @@ object snake {
 			if(s.segAnterior() != null) s.position(s.segAnterior().position())
 		})
 		
-		if (self.direccion() == 1) {
+		if (self.direccion() == derecha) {
 			cabeza.position(cabeza.position().right(1))
 		}
-		else if (self.direccion() == -1) {
+		else if (self.direccion() == izquierda) {
 			cabeza.position(cabeza.position().left(1))
 		}
-		else if (self.direccion() == 2) {
+		else if (self.direccion() == arriba) {
 			cabeza.position(cabeza.position().up(1))
 		}
 		else {
