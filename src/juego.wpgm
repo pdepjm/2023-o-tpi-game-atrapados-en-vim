@@ -1,13 +1,25 @@
 import wollok.game.*
 import pepita.*
+import snake.*
 
 program juego {
 	game.title("WOLLOK SNAKE")
-	game.width(17)
-	game.height(15)
+	game.width(25)
+	game.height(25)
 	game.cellSize(25)
-	game.addVisual(pepita)
-	// YA ME TIRA ERROR PARA PONER UN ... BACKGROUND
-	//game.ground("verde.png")
+	
+	snake.agregarSegmento()
+	snake.agregarSegmento()
+	snake.agregarSegmento()
+	
+	snake.segmentos().forEach({s => game.addVisual(s)})
+	
+	game.onTick(200, "mover snake", {snake.mover()})
+	
+	keyboard.up().onPressDo({ snake.direccion(2) })
+	keyboard.down().onPressDo({ snake.direccion(-2) })
+	keyboard.right().onPressDo({ snake.direccion(1) })
+	keyboard.left().onPressDo({ snake.direccion(-1) })
+	
 	game.start()
 }
