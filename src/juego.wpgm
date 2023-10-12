@@ -2,6 +2,7 @@ import wollok.game.*
 import pepita.*
 import snake.*
 import frutas.*
+import direcciones.*
 
 program juego {
 	game.title("WOLLOK SNAKE")
@@ -17,10 +18,10 @@ program juego {
 	
 	game.onTick(100, "mover snake", {snake.mover()})
 	
-	keyboard.up().onPressDo({ snake.direccion(2) })
-	keyboard.down().onPressDo({ snake.direccion(-2) })
-	keyboard.right().onPressDo({ snake.direccion(1) })
-	keyboard.left().onPressDo({ snake.direccion(-1) })
+	keyboard.up().onPressDo({ snake.direccion(arriba) })
+	keyboard.down().onPressDo({ snake.direccion(abajo) })
+	keyboard.right().onPressDo({ snake.direccion(derecha) })
+	keyboard.left().onPressDo({ snake.direccion(izquierda) })
 	
 	game.addVisual(manzana)
 	
