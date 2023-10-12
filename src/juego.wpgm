@@ -1,6 +1,7 @@
 import wollok.game.*
 import pepita.*
 import snake.*
+import frutas.*
 
 program juego {
 	game.title("WOLLOK SNAKE")
@@ -8,18 +9,22 @@ program juego {
 	game.height(25)
 	game.cellSize(25)
 	
+	game.addVisual(cabeza)
 	snake.agregarSegmento()
 	snake.agregarSegmento()
 	snake.agregarSegmento()
 	
-	snake.segmentos().forEach({s => game.addVisual(s)})
 	
-	game.onTick(200, "mover snake", {snake.mover()})
+	game.onTick(100, "mover snake", {snake.mover()})
 	
 	keyboard.up().onPressDo({ snake.direccion(2) })
 	keyboard.down().onPressDo({ snake.direccion(-2) })
 	keyboard.right().onPressDo({ snake.direccion(1) })
 	keyboard.left().onPressDo({ snake.direccion(-1) })
+	
+	game.addVisual(manzana)
+	
+	game.onCollideDo(cabeza, {fruta => fruta.efecto()})
 	
 	game.start()
 }

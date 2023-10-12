@@ -6,6 +6,7 @@ class Segmento {
 	
 	var property position = game.center()
 	method image() = "pepita.png"
+	method efecto(){game.say(self,"perdiste")}
 	
 }
 
@@ -50,5 +51,6 @@ object snake {
 
 	method agregarSegmento() {
 		segmentos.add(new Segmento(segAnterior = segmentos.last()))
-	}	
+		game.addVisual(segmentos.last())
+	}
 }
