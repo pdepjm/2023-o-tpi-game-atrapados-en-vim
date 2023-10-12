@@ -4,15 +4,13 @@ import direcciones.*
 class Segmento {
 	var property segAnterior = null
 	
-	var property position = game.center()
+	var property position = game.at(50,50)
 	method image() = "pepita.png"
 	method efecto(){game.say(self,"perdiste")}
 	
 }
 
-object cabeza inherits Segmento {
-	// LOGICA UNICA DE LA CABEZA DE COMER Y ESO
-}
+const cabeza = new Segmento(position = game.center())
 
 object snake {
 	// derecha = 1, izquierda = -1, arriba = 2, abajo = -2
