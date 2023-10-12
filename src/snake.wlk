@@ -1,12 +1,13 @@
 import wollok.game.*
 import direcciones.*
+import controller.*
 
 class Segmento {
 	var property segAnterior = null
 	
 	var property position = game.at(50,50)
 	method image() = "pepita.png"
-	method efecto(){game.say(self,"perdiste")}
+	method efecto(){controller.gameOver()}
 	
 }
 
@@ -18,7 +19,15 @@ object snake {
 	// dejo asi para poder calcular cuando las direcciones son opuestas
 	var property direccion = derecha
 	
-	const property segmentos = [cabeza]
+	const segmentos = [cabeza]
+	
+	method score() = segmentos.size()
+	
+	method reiniciar(){
+		segmentos.removeAllSuchThat({segmento => segmento != cabeza})
+		cabeza.position(game.center())
+		direccion = derecha
+	}
 	
 	method direccion(dir) {
 		if (direccion.puedeMoverseHacia(dir)) {
@@ -51,4 +60,7 @@ object snake {
 		segmentos.add(new Segmento(segAnterior = segmentos.last()))
 		game.addVisual(segmentos.last())
 	}
+	
+	method puedoDibujar(posicion,fruta) = segmentos.all({segmento => segmento.position() != posicion})
+	
 }

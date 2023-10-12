@@ -1,31 +1,14 @@
 import wollok.game.*
-import pepita.*
-import snake.*
-import frutas.*
-import direcciones.*
+import controller.*
 
 program juego {
 	game.title("WOLLOK SNAKE")
-	game.width(25)
-	game.height(25)
-	game.cellSize(25)
 	
-	game.addVisual(cabeza)
-	snake.agregarSegmento()
-	snake.agregarSegmento()
-	snake.agregarSegmento()
+	controller.inicializar()
 	
-	
-	game.onTick(100, "mover snake", {snake.mover()})
-	
-	keyboard.up().onPressDo({ snake.direccion(arriba) })
-	keyboard.down().onPressDo({ snake.direccion(abajo) })
-	keyboard.right().onPressDo({ snake.direccion(derecha) })
-	keyboard.left().onPressDo({ snake.direccion(izquierda) })
-	
-	game.addVisual(manzana)
-	
-	game.onCollideDo(cabeza, {fruta => fruta.efecto()})
+	controller.empezarJuego()
 	
 	game.start()
 }
+
+
