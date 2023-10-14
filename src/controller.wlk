@@ -7,7 +7,7 @@ object controller {
 	
 	const property  game_width = 25
 	const property game_height = 25
-	const cell_size = 25
+	const cell_size = 20
 	var highscore =0
 	var frutaActiva = manzana
 

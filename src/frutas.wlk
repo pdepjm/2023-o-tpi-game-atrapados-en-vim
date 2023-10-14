@@ -4,7 +4,7 @@ import controller.*
 import posiciones.*
 class Fruta{
 	var property position = game.at(21,12)
-	method image() = "pepita.png"
+	const property image = "pepita.png"
 	method efecto(){
 //		var aux = game.at(0.randomUpTo(24).roundUp(),0.randomUpTo(24).roundUp())
 //		if(snake.puedoDibujar(aux,self) and aux != position) {
@@ -17,7 +17,7 @@ class Fruta{
 	
 }
 
-object manzana inherits Fruta {
+object manzana inherits Fruta(image = "apple.png") {
 	
 	override method efecto(){
 		super()

@@ -5,7 +5,7 @@ program juego {
 	game.title("WOLLOK SNAKE")
 	
 	controller.inicializar()
-	
+		
 	controller.empezarJuego()
 	
 	game.start()

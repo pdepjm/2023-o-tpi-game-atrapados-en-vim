@@ -6,7 +6,7 @@ class Segmento {
 	var property segAnterior = null
 	
 	var property position = game.at(50,50)
-	method image() = "cuadradito.png"
+	method image() = "pepita.png"
 	method efecto(){controller.gameOver()}
 	
 }
