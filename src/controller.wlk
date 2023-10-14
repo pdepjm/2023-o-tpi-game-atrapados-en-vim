@@ -10,7 +10,6 @@ object controller {
 	const cell_size = 25
 	var highscore =0
 	var frutaActiva = manzana
-	//const todasLasPosiciones = new Range(start = 0 , end = 25).map(n => [1,2,3..25])
 
 	method highscore() = highscore
 	
@@ -18,6 +17,7 @@ object controller {
 		game.width(game_width)
 		game.height(game_height)
 		game.cellSize(cell_size)
+		//game.ground("sqaure-icon.png")
 	}
 	
 	

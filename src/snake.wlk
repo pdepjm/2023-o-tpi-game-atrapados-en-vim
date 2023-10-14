@@ -6,7 +6,7 @@ class Segmento {
 	var property segAnterior = null
 	
 	var property position = game.at(50,50)
-	method image() = "pepita.png"
+	method image() = "cuadradito.png"
 	method efecto(){controller.gameOver()}
 	
 }
@@ -18,8 +18,8 @@ object snake {
 	// x ahora lo hardcodeo, dsps estaria bueno definir objetos o algo
 	// dejo asi para poder calcular cuando las direcciones son opuestas
 	var property direccion = derecha
-	
 	const segmentos = [cabeza]
+	
 	
 	method score() = segmentos.size()
 	
