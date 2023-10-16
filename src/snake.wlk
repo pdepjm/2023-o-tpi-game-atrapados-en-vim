@@ -6,8 +6,10 @@ class Segmento {
 	var property segAnterior = null
 	
 	var property position = game.at(50,50)
-	method image() = "pepita.png"
+	method image() = "cuadradito.png"
 	method efecto(){controller.gameOver()}
+	
+	method fueraDelMapa() = not (position.x().between(0,24) and position.y().between(0,24))
 	
 }
 
@@ -53,6 +55,9 @@ object snake {
 		}
 		else {
 			cabeza.position(cabeza.position().down(1))
+		}
+		if(cabeza.fueraDelMapa()){
+			controller.gameOver()
 		}
 	}
 
