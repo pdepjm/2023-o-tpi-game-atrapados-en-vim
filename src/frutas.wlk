@@ -2,6 +2,7 @@ import snake.snake
 import wollok.game.*
 import controller.*
 import posiciones.*
+
 class Fruta{
 	var property position = game.at(21,12)
 	const property image = "pepita.png"
@@ -25,12 +26,21 @@ object manzana inherits Fruta(image = "apple.png") {
 	}
 }
 
-object wollokApple inherits Fruta{
+object wollokApple inherits Fruta(image = "wollok.png"){
 	override method efecto(){
 		super()
-		//ALGO
+		controller.gameOver()
+		// A CASA
 	}
 	
+}
+
+object manzanaVeloz inherits Fruta(image = "veloz.png"){
+	override method efecto(){
+		super()
+		controller.cambiarVelocidad()
+		game.removeVisual(self)
+	}
 }
 	
 	

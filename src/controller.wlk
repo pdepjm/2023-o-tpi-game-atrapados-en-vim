@@ -9,7 +9,8 @@ object controller {
 	const property game_height = 25
 	const cell_size = 32
 	var highscore =0
-	var frutaActiva = manzana
+	const frutas = [manzanaVeloz,wollokApple]
+	var frutaActiva 
 
 	method highscore() = highscore
 	
@@ -17,7 +18,7 @@ object controller {
 		game.width(game_width)
 		game.height(game_height)
 		game.cellSize(cell_size)
-		//game.ground("sqaure-icon.png")
+		//game.ground("blanco.png")
 	}
 	
 	
@@ -36,12 +37,22 @@ object controller {
 		keyboard.right().onPressDo({ snake.direccion(derecha) })
 		keyboard.left().onPressDo({ snake.direccion(izquierda) })
 		
-		game.addVisual(frutaActiva)
+		game.addVisual(manzana)
+		
+		game.onTick(20000,"aparecer fruta especial",{
+			frutaActiva = frutas.anyOne()
+			if(not game.hasVisual(frutaActiva)){
+				game.addVisual(frutaActiva)
+			}
+			
+		})
 		
 		game.onCollideDo(cabeza, {elemento => elemento.efecto()})
 	}
 	
 	method gameOver(){
+		game.removeTickEvent("mover snake")
+		game.removeTickEvent("aparecer fruta especial")
 		highscore = highscore.max(snake.score())
 		game.clear()
 		game.addVisual(pepita)
@@ -53,4 +64,15 @@ object controller {
 		})
 	}
 	
+method cambiarVelocidad(){
+	game.removeTickEvent("mover snake")
+	game.onTick(25, "mover snake", {snake.mover()})
+	game.schedule(10000,{
+		game.removeTickEvent("mover snake")
+		game.onTick(100, "mover snake", {snake.mover()})
+	})
+}	
 }
+
+
+

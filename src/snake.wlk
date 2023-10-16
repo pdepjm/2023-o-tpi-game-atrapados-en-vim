@@ -9,18 +9,21 @@ class Segmento {
 	method image() = "cuadradito.png"
 	method efecto(){controller.gameOver()}
 	
-	method fueraDelMapa() = not (position.x().between(0,24) and position.y().between(0,24))
+	
 	
 }
 
-const cabeza = new Segmento(position = game.center())
+object cabeza{
+	var property segAnterior = null
+	var property position = game.center()
+	method image() = "cuadradito.png"
+	
+	method fueraDelMapa() = not (position.x().between(0,24) and position.y().between(0,24))
+}
 
 object snake {
-	// derecha = 1, izquierda = -1, arriba = 2, abajo = -2
-	// x ahora lo hardcodeo, dsps estaria bueno definir objetos o algo
-	// dejo asi para poder calcular cuando las direcciones son opuestas
 	var property direccion = derecha
-	const segmentos = [cabeza]
+	const property segmentos = [cabeza]
 	
 	
 	method score() = segmentos.size()
@@ -66,6 +69,6 @@ object snake {
 		game.addVisual(segmentos.last())
 	}
 	
-	method puedoDibujar(posicion,fruta) = segmentos.all({segmento => segmento.position() != posicion})
+//	method puedoDibujar(posicion,fruta) = segmentos.all({segmento => segmento.position() != posicion})
 	
 }
