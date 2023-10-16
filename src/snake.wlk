@@ -22,7 +22,7 @@ object cabeza{
 }
 
 object snake {
-	var property direccion = derecha
+	var direccion = derecha
 	const property segmentos = [cabeza]
 	
 	
@@ -47,13 +47,13 @@ object snake {
 			if(s.segAnterior() != null) s.position(s.segAnterior().position())
 		})
 		
-		if (self.direccion() == derecha) {
+		if (direccion == derecha) {
 			cabeza.position(cabeza.position().right(1))
 		}
-		else if (self.direccion() == izquierda) {
+		else if (direccion == izquierda) {
 			cabeza.position(cabeza.position().left(1))
 		}
-		else if (self.direccion() == arriba) {
+		else if (direccion == arriba) {
 			cabeza.position(cabeza.position().up(1))
 		}
 		else {
