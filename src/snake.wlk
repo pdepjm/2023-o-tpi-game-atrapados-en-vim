@@ -7,7 +7,7 @@ class Segmento {
 	
 	var property position = game.at(50,50)
 	method image() = "cuadradito.png"
-	method efecto(){}
+	method efecto(){controller.gameOver()}
 	//method text() = "soy un segmento"
 	
 	

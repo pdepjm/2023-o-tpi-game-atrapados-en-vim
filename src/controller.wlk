@@ -10,9 +10,8 @@ object controller {
 	const cell_size = 32
 	var highscore =0
 	const frutas = [manzanaVeloz,wollokApple]
-	var frutaActiva 
-	var seEstaMoviendo
-	var milisVelocidad = 100
+	var frutaActiva
+	var milisVelocidad
 	method highscore() = highscore
 	
 	method inicializar(){
@@ -37,6 +36,7 @@ object controller {
 		snake.agregarSegmento()
 		snake.agregarSegmento()
 		
+		milisVelocidad = 100
 		
 		game.onTick(milisVelocidad, "mover snake", {
 			snake.mover()
