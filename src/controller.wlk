@@ -12,6 +12,7 @@ object controller {
 	const frutas = [manzanaVeloz,wollokApple]
 	var frutaActiva 
 	var seEstaMoviendo
+	var milisVelocidad = 100
 	method highscore() = highscore
 	
 	method inicializar(){
@@ -37,17 +38,57 @@ object controller {
 		snake.agregarSegmento()
 		
 		
-		game.onTick(100, "mover snake", {
+		game.onTick(milisVelocidad, "mover snake", {
 			snake.mover()
 			if(cabeza.fueraDelMapa()){
 			self.gameOver()
 		}
 		})
 		
-		keyboard.up().onPressDo({ snake.direccion(arriba) })
-		keyboard.down().onPressDo({snake.direccion(abajo) })
-		keyboard.right().onPressDo({snake.direccion(derecha) })
-		keyboard.left().onPressDo({snake.direccion(izquierda) })
+		keyboard.up().onPressDo({ 
+			game.removeTickEvent("mover snake")
+			snake.direccion(arriba)
+			snake.mover()
+			game.onTick(100, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()){
+			self.gameOver()
+		}
+		})
+		})
+		keyboard.down().onPressDo({
+			game.removeTickEvent("mover snake")
+			snake.direccion(abajo)
+			snake.mover()
+			game.onTick(milisVelocidad, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()){
+			self.gameOver()
+		}
+		})
+		})
+		keyboard.right().onPressDo({
+			game.removeTickEvent("mover snake")
+			snake.direccion(derecha)
+			snake.mover()
+			game.onTick(milisVelocidad, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()){
+			self.gameOver()
+		}
+		})
+		})
+		keyboard.left().onPressDo({
+			game.removeTickEvent("mover snake")
+			snake.direccion(izquierda)
+			snake.mover()
+			game.onTick(milisVelocidad, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()){
+			self.gameOver()
+		}
+		})
+		})
 		
 		game.addVisual(manzana)
 		
@@ -78,22 +119,16 @@ object controller {
 	
 method cambiarVelocidad(){
 	game.removeTickEvent("mover snake")
-	game.onTick(25, "mover snake", {
+	milisVelocidad = 25
+	game.onTick(milisVelocidad, "mover snake", {
 		snake.mover()
 		if(cabeza.fueraDelMapa()){
 			self.gameOver()
 		}
 	})
-	game.schedule(10000,{
-		game.removeTickEvent("mover snake")
-		game.onTick(100, "mover snake", {
-		snake.mover()
-		if(cabeza.fueraDelMapa()){
-			self.gameOver()
-		}
-		})
-	})
-}	
+	game.schedule(10000,{ milisVelocidad = 100})	
+	
+	}
 }
 
 
