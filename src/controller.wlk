@@ -11,7 +11,7 @@ object controller {
 	var highscore =0
 	const frutas = [manzanaVeloz,wollokApple]
 	var frutaActiva 
-
+	var seEstaMoviendo
 	method highscore() = highscore
 	
 	method inicializar(){
@@ -21,8 +21,15 @@ object controller {
 		//game.ground("blanco.png")
 	}
 	
-	method getRandomPosition() = game.at(0.randomUpTo(game_width -1).roundUp(),0.randomUpTo(game_height - 1).roundUp())
 	
+	method estaLibre(position) = position.allElements().isEmpty()
+	method getRandomPosition() = game.at(0.randomUpTo(game_width -1).roundUp(),0.randomUpTo(game_height - 1).roundUp())
+	method getRandomPositionFree(){
+		var aux = self.getRandomPosition()
+		if(self.estaLibre(aux)) return aux
+		else return self.getRandomPositionFree()
+		
+	}
 	method empezarJuego(){
 		game.addVisual(cabeza)
 		snake.agregarSegmento()
@@ -33,14 +40,14 @@ object controller {
 		game.onTick(100, "mover snake", {
 			snake.mover()
 			if(cabeza.fueraDelMapa()){
-			controller.gameOver()
+			self.gameOver()
 		}
 		})
 		
 		keyboard.up().onPressDo({ snake.direccion(arriba) })
-		keyboard.down().onPressDo({ snake.direccion(abajo) })
-		keyboard.right().onPressDo({ snake.direccion(derecha) })
-		keyboard.left().onPressDo({ snake.direccion(izquierda) })
+		keyboard.down().onPressDo({snake.direccion(abajo) })
+		keyboard.right().onPressDo({snake.direccion(derecha) })
+		keyboard.left().onPressDo({snake.direccion(izquierda) })
 		
 		game.addVisual(manzana)
 		
@@ -74,12 +81,17 @@ method cambiarVelocidad(){
 	game.onTick(25, "mover snake", {
 		snake.mover()
 		if(cabeza.fueraDelMapa()){
-			controller.gameOver()
+			self.gameOver()
 		}
 	})
 	game.schedule(10000,{
 		game.removeTickEvent("mover snake")
-		game.onTick(100, "mover snake", {snake.mover()})
+		game.onTick(100, "mover snake", {
+		snake.mover()
+		if(cabeza.fueraDelMapa()){
+			self.gameOver()
+		}
+		})
 	})
 }	
 }

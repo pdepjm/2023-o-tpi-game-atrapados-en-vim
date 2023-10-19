@@ -8,7 +8,7 @@ class Segmento {
 	var property position = game.at(50,50)
 	method image() = "cuadradito.png"
 	method efecto(){controller.gameOver()}
-	
+	//method text() = "soy un segmento"
 	
 	
 }
@@ -46,19 +46,7 @@ object snake {
 		segmentos.reverse().forEach({s => 
 			if(s.segAnterior() != null) s.position(s.segAnterior().position())
 		})
-		
-		if (direccion == derecha) {
-			cabeza.position(cabeza.position().right(1))
-		}
-		else if (direccion == izquierda) {
-			cabeza.position(cabeza.position().left(1))
-		}
-		else if (direccion == arriba) {
-			cabeza.position(cabeza.position().up(1))
-		}
-		else {
-			cabeza.position(cabeza.position().down(1))
-		}
+		direccion.moverCabeza()
 	}
 
 	method agregarSegmento() {

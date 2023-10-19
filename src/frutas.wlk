@@ -13,22 +13,22 @@ class Fruta{
 //		}
 //		else {self.efecto()}
 		//position = posiciones.todas().filter({pos => pos.allElements().isEmpty()}).anyOne()
-		position = controller.getRandomPosition()
+		position = controller.getRandomPositionFree()
+		self.efectoAdicional()
 	}
-	
+	method efectoAdicional()
+	// Metodo abstracto
 }
 
 object manzana inherits Fruta(image = "apple.png") {
 	
-	override method efecto(){
-		super()
+	override method efectoAdicional(){
 		snake.agregarSegmento()
 	}
 }
 
 object wollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10)){
-	override method efecto(){
-		super()
+	override method efectoAdicional(){
 		controller.gameOver()
 		// A CASA
 	}
@@ -36,8 +36,7 @@ object wollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10
 }
 
 object manzanaVeloz inherits Fruta(image = "veloz.png"){
-	override method efecto(){
-		super()
+	override method efectoAdicional(){
 		controller.cambiarVelocidad()
 		game.removeVisual(self)
 	}
