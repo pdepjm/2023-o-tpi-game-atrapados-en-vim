@@ -26,7 +26,7 @@ object manzana inherits Fruta(image = "apple.png") {
 	}
 }
 
-object wollokApple inherits Fruta(image = "wollok.png"){
+object wollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10)){
 	override method efecto(){
 		super()
 		controller.gameOver()

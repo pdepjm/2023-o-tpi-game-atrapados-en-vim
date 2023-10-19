@@ -30,7 +30,12 @@ object controller {
 		snake.agregarSegmento()
 		
 		
-		game.onTick(100, "mover snake", {snake.mover()})
+		game.onTick(100, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()){
+			controller.gameOver()
+		}
+		})
 		
 		keyboard.up().onPressDo({ snake.direccion(arriba) })
 		keyboard.down().onPressDo({ snake.direccion(abajo) })
@@ -39,7 +44,7 @@ object controller {
 		
 		game.addVisual(manzana)
 		
-		game.onTick(20000,"aparecer fruta especial",{
+		game.onTick(10000,"aparecer fruta especial",{
 			frutaActiva = frutas.anyOne()
 			if(not game.hasVisual(frutaActiva)){
 				game.addVisual(frutaActiva)
@@ -66,7 +71,12 @@ object controller {
 	
 method cambiarVelocidad(){
 	game.removeTickEvent("mover snake")
-	game.onTick(25, "mover snake", {snake.mover()})
+	game.onTick(25, "mover snake", {
+		snake.mover()
+		if(cabeza.fueraDelMapa()){
+			controller.gameOver()
+		}
+	})
 	game.schedule(10000,{
 		game.removeTickEvent("mover snake")
 		game.onTick(100, "mover snake", {snake.mover()})

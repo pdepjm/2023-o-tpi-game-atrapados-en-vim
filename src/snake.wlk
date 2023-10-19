@@ -18,7 +18,7 @@ object cabeza{
 	var property position = game.center()
 	method image() = "cuadradito.png"
 	
-	method fueraDelMapa() = not (position.x().between(0,24) and position.y().between(0,24))
+	method fueraDelMapa() = not (position.x().between(0,controller.game_width()-1) and position.y().between(0,controller.game_height()-1))
 }
 
 object snake {
@@ -58,9 +58,6 @@ object snake {
 		}
 		else {
 			cabeza.position(cabeza.position().down(1))
-		}
-		if(cabeza.fueraDelMapa()){
-			controller.gameOver()
 		}
 	}
 
