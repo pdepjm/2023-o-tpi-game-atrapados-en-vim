@@ -5,8 +5,8 @@ import frutas.*
 import direcciones.*
 object controller {
 	
-	const property  game_width = 25
-	const property game_height = 25
+	const property  game_width = 20
+	const property game_height = 20
 	const cell_size = 32
 	var highscore =0
 	const frutas = [manzanaVeloz,wollokApple]
@@ -21,7 +21,7 @@ object controller {
 		//game.ground("blanco.png")
 	}
 	
-	
+	method getRandomPosition() = game.at(0.randomUpTo(game_width -1).roundUp(),0.randomUpTo(game_height - 1).roundUp())
 	
 	method empezarJuego(){
 		game.addVisual(cabeza)
