@@ -30,6 +30,17 @@ object controller {
 		else return self.getRandomPositionFree()
 		
 	}
+	
+	method moverHacia(direccion){
+			game.removeTickEvent("mover snake")
+			snake.direccion(direccion)
+			snake.mover()
+			game.onTick(100, "mover snake", {
+			snake.mover()
+			if(cabeza.fueraDelMapa()) self.gameOver()
+		})
+	}
+	
 	method empezarJuego(){
 		game.addVisual(cabeza)
 		snake.agregarSegmento()
@@ -45,50 +56,13 @@ object controller {
 		}
 		})
 		
-		keyboard.up().onPressDo({ 
-			game.removeTickEvent("mover snake")
-			snake.direccion(arriba)
-			snake.mover()
-			game.onTick(100, "mover snake", {
-			snake.mover()
-			if(cabeza.fueraDelMapa()){
-			self.gameOver()
-		}
-		})
-		})
-		keyboard.down().onPressDo({
-			game.removeTickEvent("mover snake")
-			snake.direccion(abajo)
-			snake.mover()
-			game.onTick(milisVelocidad, "mover snake", {
-			snake.mover()
-			if(cabeza.fueraDelMapa()){
-			self.gameOver()
-		}
-		})
-		})
-		keyboard.right().onPressDo({
-			game.removeTickEvent("mover snake")
-			snake.direccion(derecha)
-			snake.mover()
-			game.onTick(milisVelocidad, "mover snake", {
-			snake.mover()
-			if(cabeza.fueraDelMapa()){
-			self.gameOver()
-		}
-		})
-		})
-		keyboard.left().onPressDo({
-			game.removeTickEvent("mover snake")
-			snake.direccion(izquierda)
-			snake.mover()
-			game.onTick(milisVelocidad, "mover snake", {
-			snake.mover()
-			if(cabeza.fueraDelMapa()){
-			self.gameOver()
-		}
-		})
-		})
+		keyboard.up().onPressDo({self.moverHacia(arriba)})
+		
+		keyboard.down().onPressDo({self.moverHacia(abajo)})
+		
+		keyboard.right().onPressDo({self.moverHacia(derecha)})
+		
+		keyboard.left().onPressDo({self.moverHacia(izquierda)})
 		
 		game.addVisual(manzana)
 		
