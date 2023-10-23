@@ -3,6 +3,8 @@ import pepita.*
 import snake.*
 import frutas.*
 import direcciones.*
+import carteles.*
+
 object controller {
 	
 	const property  game_width = 20
@@ -25,7 +27,7 @@ object controller {
 	method estaLibre(position) = position.allElements().isEmpty()
 	method getRandomPosition() = game.at(0.randomUpTo(game_width -1).roundUp(),0.randomUpTo(game_height - 1).roundUp())
 	method getRandomPositionFree(){
-		var aux = self.getRandomPosition()
+		const aux = self.getRandomPosition()
 		if(self.estaLibre(aux)) return aux
 		else return self.getRandomPositionFree()
 		
@@ -82,8 +84,10 @@ object controller {
 		game.removeTickEvent("aparecer fruta especial")
 		highscore = highscore.max(snake.score())
 		game.clear()
-		game.addVisual(pepita)
-		game.say(pepita, "Perdiste, tu puntaje fue: " + snake.score().toString() + " toca r para volver a jugar")
+//		game.addVisual(pepita)
+		cartelGameOver.puntaje(snake.score())
+		game.addVisual(cartelGameOver)
+//		game.say(pepita, "Perdiste, tu puntaje fue: " + snake.score().toString() + " toca r para volver a jugar")
 		keyboard.r().onPressDo({
 			game.clear()
 			snake.reiniciar()
