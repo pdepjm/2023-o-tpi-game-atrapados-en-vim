@@ -1,10 +1,11 @@
-# Nombre del juego (<- borrar y completar)
+# Wollok Snake
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+Uriel Grifman
+Matias Feldman
+Matias Dopazo
+Gonzalo Turri
 
 ## Capturas
 
@@ -17,6 +18,6 @@
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- UTNBA Facultad Regional Buenos Aires,  Curso paradigmas: K2004/2104
+- Versión de wollok: 3.0.0
+- Una vez terminado, no tenemos problemas en que el repositorio sea público 
