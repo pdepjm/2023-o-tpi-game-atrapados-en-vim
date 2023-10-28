@@ -2,7 +2,7 @@ import snake.snake
 import wollok.game.*
 import controller.*
 
-class Fruta{
+class Fruta {
 	var property position = game.at(3,3)
 	const property image = "pepita.png"
 	
@@ -27,6 +27,7 @@ class Fruta{
 object manzana inherits Fruta(image = "apple.png") {
 	
 	override method efectoAdicional(){
+		new Sound(file = "mlem-sonido.mp3").play()
 		snake.agregarSegmento()
 	}
 }
@@ -56,3 +57,30 @@ object manzanaEvil inherits Fruta(image = "manzanaEvil.png") {
 		}
 	}
 }
+
+// prueba con clases
+//class WollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10)){
+//	override method efectoAdicional(){
+//		controller.gameOver()
+//		// A CASA
+//	}
+//	
+//}
+//
+//class ManzanaVeloz inherits Fruta(image = "veloz.png"){
+//	override method efectoAdicional(){
+//		controller.cambiarVelocidad()
+//		game.removeVisual(self)
+//	}
+//}
+//	
+//	
+//class ManzanaEvil inherits Fruta(image = "manzanaEvil.png") {
+//	override method efectoAdicional() {
+//		if(snake.score() > 1) {
+//			snake.quitarSegmento()
+//		} else {
+//			controller.gameOver()
+//		}
+//	}
+//}

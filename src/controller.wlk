@@ -13,6 +13,8 @@ object controller {
 	var highscore =0
 	const frutas = [manzanaVeloz,wollokApple, manzanaEvil]
 	var frutaActiva
+	var nuevaFruta
+	var numFruta
 	var milisVelocidad
 	method highscore() = highscore
 	
@@ -70,12 +72,26 @@ object controller {
 		manzana.renovarPosicion()
 		game.addVisual(manzana)
 		
-		game.onTick(10000,"aparecer fruta especial",{
+		game.onTick(7000,"aparecer fruta especial",{
 			frutaActiva = frutas.anyOne()
 			if(not game.hasVisual(frutaActiva)){
 				game.addVisual(frutaActiva)
 			}
-			
+
+// REVISAR
+// No me gustan estos ifs, pero no se me ocurre como hacer de otra forma para que haya mas de una fruta del mismo tipo
+// Igual no funciona bien
+//			numFruta = 0.randomUpTo(3).roundUp()
+//			if (numFruta.equals(1)) {
+//				nuevaFruta = new ManzanaVeloz()
+//			}
+//			else if (numFruta.equals(2)) {
+//				nuevaFruta = new WollokApple()
+//			}
+//			else {
+//				nuevaFruta = new ManzanaEvil()
+//			}
+//			game.addVisual(nuevaFruta)
 		})
 		
 		game.onCollideDo(cabeza, {elemento => elemento.efecto()})
