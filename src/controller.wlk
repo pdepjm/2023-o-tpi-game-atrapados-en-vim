@@ -11,7 +11,7 @@ object controller {
 	const property game_height = 20
 	const cell_size = 32
 	var highscore =0
-	const frutas = [manzanaVeloz,wollokApple]
+	const frutas = [manzanaVeloz,wollokApple, manzanaEvil]
 	var frutaActiva
 	var milisVelocidad
 	method highscore() = highscore
@@ -44,6 +44,7 @@ object controller {
 	}
 	
 	method empezarJuego(){
+		game.clear()
 		game.addVisual(cabeza)
 		snake.agregarSegmento()
 		snake.agregarSegmento()
@@ -66,6 +67,7 @@ object controller {
 		
 		keyboard.left().onPressDo({self.moverHacia(izquierda)})
 		
+		manzana.renovarPosicion()
 		game.addVisual(manzana)
 		
 		game.onTick(10000,"aparecer fruta especial",{
@@ -83,7 +85,6 @@ object controller {
 		game.removeTickEvent("mover snake")
 		game.removeTickEvent("aparecer fruta especial")
 		highscore = highscore.max(snake.score())
-		game.clear()
 //		game.addVisual(pepita)
 		cartelGameOver.puntaje(snake.score())
 		game.addVisual(cartelGameOver)

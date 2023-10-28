@@ -54,6 +54,7 @@ object snake {
 		game.addVisual(segmentos.last())
 	}
 	
-//	method puedoDibujar(posicion,fruta) = segmentos.all({segmento => segmento.position() != posicion})
-	
+	method quitarSegmento() {
+		segmentos.remove(segmentos.last())
+	}
 }

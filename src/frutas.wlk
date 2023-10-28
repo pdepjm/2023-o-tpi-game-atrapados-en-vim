@@ -1,11 +1,15 @@
 import snake.snake
 import wollok.game.*
 import controller.*
-import posiciones.*
 
 class Fruta{
 	var property position = game.at(3,3)
 	const property image = "pepita.png"
+	
+	method renovarPosicion() {
+		position = controller.getRandomPositionFree()
+	}
+	
 	method efecto(){
 //		var aux = game.at(0.randomUpTo(24).roundUp(),0.randomUpTo(24).roundUp())
 //		if(snake.puedoDibujar(aux,self) and aux != position) {
@@ -13,7 +17,7 @@ class Fruta{
 //		}
 //		else {self.efecto()}
 		//position = posiciones.todas().filter({pos => pos.allElements().isEmpty()}).anyOne()
-		position = controller.getRandomPositionFree()
+		self.renovarPosicion()
 		self.efectoAdicional()
 	}
 	method efectoAdicional()
@@ -43,8 +47,12 @@ object manzanaVeloz inherits Fruta(image = "veloz.png"){
 }
 	
 	
-
-
-
-
-
+object manzanaEvil inherits Fruta(image = "manzanaEvil.png") {
+	override method efectoAdicional() {
+		if(snake.score() > 1) {
+			snake.quitarSegmento()
+		} else {
+			controller.gameOver()
+		}
+	}
+}
