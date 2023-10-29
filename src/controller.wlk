@@ -11,13 +11,16 @@ object controller {
 	const property game_height = 20
 	const cell_size = 32
 	var highscore =0
-	const frutas = [manzanaVeloz,wollokApple, manzanaEvil]
+	//const frutas = [manzanaVeloz,wollokApple, manzanaEvil]
 	var frutaActiva
 	var nuevaFruta
 	var numFruta
 	var milisVelocidad
-	method highscore() = highscore
 	
+	const constructores = [{frutaActiva = new WollokApple()},{frutaActiva = new ManzanaVeloz()},{frutaActiva= new ManzanaEvil()}]
+	
+	
+	method highscore() = highscore
 	method inicializar(){
 		game.width(game_width)
 		game.height(game_height)
@@ -52,7 +55,7 @@ object controller {
 		snake.agregarSegmento()
 		snake.agregarSegmento()
 		
-		milisVelocidad = 100
+		milisVelocidad = 150
 		
 		game.onTick(milisVelocidad, "mover snake", {
 			snake.mover()
@@ -72,12 +75,14 @@ object controller {
 		manzana.renovarPosicion()
 		game.addVisual(manzana)
 		
-		game.onTick(7000,"aparecer fruta especial",{
-			frutaActiva = frutas.anyOne()
-			if(not game.hasVisual(frutaActiva)){
-				game.addVisual(frutaActiva)
-			}
-			else frutaActiva.renovarPosicion()
+		game.onTick(4000,"aparecer fruta especial",{
+			//frutaActiva = frutas.anyOne()
+			constructores.anyOne().apply()
+			game.addVisual(frutaActiva)
+//			if(not game.hasVisual(frutaActiva)){
+//				game.addVisual(frutaActiva)
+//			}
+//			else frutaActiva.renovarPosicion()
 
 // REVISAR
 // No me gustan estos ifs, pero no se me ocurre como hacer de otra forma para que haya mas de una fruta del mismo tipo

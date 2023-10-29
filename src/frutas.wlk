@@ -31,16 +31,46 @@ object manzana inherits Fruta(image = "apple.png") {
 		snake.agregarSegmento()
 	}
 }
+//
+//object wollokApple inherits Fruta(image = "wollok.png", position =controller.getRandomPositionFree() ){
+//	override method efectoAdicional(){
+//		controller.gameOver()
+//		// A CASA
+//	}
+//	
+//}
+//
+//object manzanaVeloz inherits Fruta(image = "veloz.png", position = controller.getRandomPositionFree()){
+//	override method efectoAdicional(){
+//		controller.cambiarVelocidad()
+//		game.removeVisual(self)
+//	}
+//}
+//	
+//	
+//object manzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controller.getRandomPositionFree()) {
+//	override method efectoAdicional() {
+//		if(snake.score() > 1) {
+//			snake.quitarSegmento()
+//			// AGREGAR POSIBLE SONIDO ??? 
+//		} else {
+//			controller.gameOver()
+//		}
+//	}
+//}
 
-object wollokApple inherits Fruta(image = "wollok.png", position =controller.getRandomPositionFree() ){
+
+class WollokApple inherits Fruta(image = "wollok.png",position = controller.getRandomPositionFree()){
 	override method efectoAdicional(){
 		controller.gameOver()
 		// A CASA
+		// TODO: EN VEZ DE SOLO PERDER QUIZAS PONER UNA LISTA DE EFECTOS Y QUE HAGA UNO RANDOM 
 	}
+	
 	
 }
 
-object manzanaVeloz inherits Fruta(image = "veloz.png", position = controller.getRandomPositionFree()){
+class ManzanaVeloz inherits Fruta(image = "veloz.png",position = controller.getRandomPositionFree()){
 	override method efectoAdicional(){
 		controller.cambiarVelocidad()
 		game.removeVisual(self)
@@ -48,7 +78,7 @@ object manzanaVeloz inherits Fruta(image = "veloz.png", position = controller.ge
 }
 	
 	
-object manzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controller.getRandomPositionFree()) {
+class ManzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controller.getRandomPositionFree()) {
 	override method efectoAdicional() {
 		if(snake.score() > 1) {
 			snake.quitarSegmento()
@@ -57,30 +87,3 @@ object manzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controlle
 		}
 	}
 }
-
-// prueba con clases
-//class WollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10)){
-//	override method efectoAdicional(){
-//		controller.gameOver()
-//		// A CASA
-//	}
-//	
-//}
-//
-//class ManzanaVeloz inherits Fruta(image = "veloz.png"){
-//	override method efectoAdicional(){
-//		controller.cambiarVelocidad()
-//		game.removeVisual(self)
-//	}
-//}
-//	
-//	
-//class ManzanaEvil inherits Fruta(image = "manzanaEvil.png") {
-//	override method efectoAdicional() {
-//		if(snake.score() > 1) {
-//			snake.quitarSegmento()
-//		} else {
-//			controller.gameOver()
-//		}
-//	}
-//}

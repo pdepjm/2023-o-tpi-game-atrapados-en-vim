@@ -55,7 +55,7 @@ object snake {
 	}
 	
 	method quitarSegmento() {
-		segmentos.last().image("cartman.png") //provisorio
+		segmentos.last().image("cuadraditoR.png")
 		segmentos.remove(segmentos.last())
 	}
 }
