@@ -2,7 +2,7 @@ import snake.cabeza
 
 class Direccion{
 	const property opuesta
-	method puedeMoverseHacia(dir) = dir != opuesta
+	method puedeMoverseHacia(dir) = dir != opuesta && dir !=self
 	method moverCabeza()
 }
 
