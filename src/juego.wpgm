@@ -9,6 +9,7 @@ program juego {
 	controller.empezarJuego()
 	
 	game.start()
+	
 }
 
 

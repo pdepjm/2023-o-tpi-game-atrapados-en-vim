@@ -13,8 +13,6 @@ object controller {
 	var highscore =0
 	//const frutas = [manzanaVeloz,wollokApple, manzanaEvil]
 	var frutaActiva
-	var nuevaFruta
-	var numFruta
 	var milisVelocidad
 	
 	const constructores = [{frutaActiva = new WollokApple()},{frutaActiva = new ManzanaVeloz()},{frutaActiva= new ManzanaEvil()}]
@@ -55,7 +53,7 @@ object controller {
 		snake.agregarSegmento()
 		snake.agregarSegmento()
 		
-		milisVelocidad = 150
+		milisVelocidad = 100
 		
 		game.onTick(milisVelocidad, "mover snake", {
 			snake.mover()
@@ -75,7 +73,7 @@ object controller {
 		manzana.renovarPosicion()
 		game.addVisual(manzana)
 		
-		game.onTick(4000,"aparecer fruta especial",{
+		game.onTick(7000,"aparecer fruta especial",{
 			//frutaActiva = frutas.anyOne()
 			constructores.anyOne().apply()
 			game.addVisual(frutaActiva)

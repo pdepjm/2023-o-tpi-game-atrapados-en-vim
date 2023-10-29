@@ -61,8 +61,9 @@ object manzana inherits Fruta(image = "apple.png") {
 
 
 class WollokApple inherits Fruta(image = "wollok.png",position = controller.getRandomPositionFree()){
+	const efectos = [{controller.gameOver()},{3.times({n => snake.agregarSegmento()})}]
 	override method efectoAdicional(){
-		controller.gameOver()
+		efectos.anyOne().apply()
 		// A CASA
 		// TODO: EN VEZ DE SOLO PERDER QUIZAS PONER UNA LISTA DE EFECTOS Y QUE HAGA UNO RANDOM 
 	}
