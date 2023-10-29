@@ -39,7 +39,7 @@ object controller {
 			game.removeTickEvent("mover snake")
 			snake.direccion(direccion)
 			snake.mover()
-			game.onTick(100, "mover snake", {
+			game.onTick(milisVelocidad, "mover snake", {
 			snake.mover()
 			if(cabeza.fueraDelMapa()) self.gameOver()
 		})
@@ -77,6 +77,7 @@ object controller {
 			if(not game.hasVisual(frutaActiva)){
 				game.addVisual(frutaActiva)
 			}
+			else frutaActiva.renovarPosicion()
 
 // REVISAR
 // No me gustan estos ifs, pero no se me ocurre como hacer de otra forma para que haya mas de una fruta del mismo tipo

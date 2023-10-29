@@ -6,7 +6,7 @@ class Segmento {
 	var property segAnterior = null
 	
 	var property position = game.at(50,50)
-	method image() = "cuadradito.png"
+	var property image = "cuadradito.png"
 	method efecto(){controller.gameOver()}
 	//method text() = "soy un segmento"
 	
@@ -55,6 +55,7 @@ object snake {
 	}
 	
 	method quitarSegmento() {
+		segmentos.last().image("cartman.png") //provisorio
 		segmentos.remove(segmentos.last())
 	}
 }

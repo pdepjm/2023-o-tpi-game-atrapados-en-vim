@@ -32,7 +32,7 @@ object manzana inherits Fruta(image = "apple.png") {
 	}
 }
 
-object wollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10)){
+object wollokApple inherits Fruta(image = "wollok.png", position =controller.getRandomPositionFree() ){
 	override method efectoAdicional(){
 		controller.gameOver()
 		// A CASA
@@ -40,7 +40,7 @@ object wollokApple inherits Fruta(image = "wollok.png", position = game.at(10,10
 	
 }
 
-object manzanaVeloz inherits Fruta(image = "veloz.png"){
+object manzanaVeloz inherits Fruta(image = "veloz.png", position = controller.getRandomPositionFree()){
 	override method efectoAdicional(){
 		controller.cambiarVelocidad()
 		game.removeVisual(self)
@@ -48,7 +48,7 @@ object manzanaVeloz inherits Fruta(image = "veloz.png"){
 }
 	
 	
-object manzanaEvil inherits Fruta(image = "manzanaEvil.png") {
+object manzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controller.getRandomPositionFree()) {
 	override method efectoAdicional() {
 		if(snake.score() > 1) {
 			snake.quitarSegmento()
