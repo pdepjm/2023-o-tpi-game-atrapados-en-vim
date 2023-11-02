@@ -107,7 +107,11 @@ object controller {
 		highscore = highscore.max(snake.score())
 //		game.addVisual(pepita)
 		cartelGameOver.puntaje(snake.score())
+		cartelGameOver.highscores(highscore)
+		game.addVisual(cartelImagenGameOver)
 		game.addVisual(cartelGameOver)
+		
+		
 //		game.say(pepita, "Perdiste, tu puntaje fue: " + snake.score().toString() + " toca r para volver a jugar")
 		keyboard.r().onPressDo({
 			game.clear()
@@ -115,6 +119,7 @@ object controller {
 			self.empezarJuego()
 		})
 	}
+	
 	
 method cambiarVelocidad(){
 	game.removeTickEvent("mover snake")

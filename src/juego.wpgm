@@ -3,6 +3,7 @@ import controller.*
 
 program juego {
 	game.title("WOLLOK SNAKE")
+	game.ground("fondo7.jpg")
 	
 	controller.inicializar()
 		

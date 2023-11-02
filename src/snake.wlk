@@ -8,15 +8,16 @@ class Segmento {
 	var property position = game.at(50,50)
 	var property image = "cuadradito.png"
 	method efecto(){controller.gameOver()}
-	//method text() = "soy un segmento"
+//	method text() = "soy un segmento"
 	
 	
 }
 
+
 object cabeza{
 	var property segAnterior = null
 	var property position = game.center()
-	method image() = "cuadradito.png"
+	var property image = "cabezaDerecha.png"
 	
 	method fueraDelMapa() = not (position.x().between(0,controller.game_width()-1) and position.y().between(0,controller.game_height()-1))
 }

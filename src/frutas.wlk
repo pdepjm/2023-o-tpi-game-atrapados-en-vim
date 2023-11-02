@@ -81,10 +81,7 @@ class ManzanaVeloz inherits Fruta(image = "veloz.png",position = controller.getR
 	
 class ManzanaEvil inherits Fruta(image = "manzanaEvil.png",position = controller.getRandomPositionFree()) {
 	override method efectoAdicional() {
-		if(snake.score() > 1) {
 			snake.quitarSegmento()
-		} else {
-			controller.gameOver()
-		}
+		
 	}
 }
