@@ -74,6 +74,7 @@ class WollokApple inherits Fruta(image = "wollok.png",position = controller.getR
 class ManzanaVeloz inherits Fruta(image = "veloz.png",position = controller.getRandomPositionFree()){
 	override method efectoAdicional(){
 		controller.cambiarVelocidad()
+		new Sound(file = "sonidor2d2.mp3").play()
 		game.removeVisual(self)
 	}
 }
