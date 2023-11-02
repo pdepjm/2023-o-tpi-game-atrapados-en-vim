@@ -21,7 +21,7 @@ object controller {
 	method highscore() = highscore
 	method inicializar(){
 		game.width(game_width)
-		game.height(game_height)
+		game.height(game_height+1)
 		game.cellSize(cell_size)
 		//game.ground("blanco.png")
 	}
@@ -49,6 +49,9 @@ object controller {
 	method empezarJuego(){
 		game.clear()
 		game.addVisual(cabeza)
+		game.addVisual(barrita)
+		game.addVisual(trofeo)
+		game.addVisual(manzanaBarrita)
 		snake.agregarSegmento()
 		snake.agregarSegmento()
 		snake.agregarSegmento()
@@ -74,14 +77,8 @@ object controller {
 		game.addVisual(manzana)
 		
 		game.onTick(6000,"aparecer fruta especial",{
-			//frutaActiva = frutas.anyOne()
 			constructores.anyOne().apply()
 			game.addVisual(frutaActiva)
-//			if(not game.hasVisual(frutaActiva)){
-//				game.addVisual(frutaActiva)
-//			}
-//			else frutaActiva.renovarPosicion()		
-		
 		})
 		
 		game.onCollideDo(cabeza, {elemento => elemento.efecto()})
@@ -98,8 +95,9 @@ object controller {
 		game.addVisual(cartelGameOver)
 		
 		
+		
 //		game.say(pepita, "Perdiste, tu puntaje fue: " + snake.score().toString() + " toca r para volver a jugar")
-		keyboard.r().onPressDo({
+		keyboard.any().onPressDo({
 			game.clear()
 			snake.reiniciar()
 			self.empezarJuego()
