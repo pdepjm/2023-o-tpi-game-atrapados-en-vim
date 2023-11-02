@@ -21,7 +21,7 @@ object cabeza{
 }
 
 object snake {
-	var direccion = derecha
+	var property direccion = derecha
 	const property segmentos = [cabeza]
 	
 	

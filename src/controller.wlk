@@ -37,6 +37,7 @@ object controller {
 	}
 	
 	method moverHacia(direccion){
+		if(snake.direccion().puedeMoverseHacia(direccion)){
 			game.removeTickEvent("mover snake")
 			snake.direccion(direccion)
 			snake.mover()
@@ -44,6 +45,8 @@ object controller {
 			snake.mover()
 			if(cabeza.fueraDelMapa()) self.gameOver()
 		})
+			
+		}
 	}
 	
 	method empezarJuego(){
