@@ -85,6 +85,7 @@ object controller {
 	}
 	
 	method gameOver(){
+		game.sound("gameover.mp3").play()
 		game.removeTickEvent("mover snake")
 		game.removeTickEvent("aparecer fruta especial")
 		highscore = highscore.max(snake.score())
