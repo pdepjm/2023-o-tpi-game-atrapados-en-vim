@@ -13,6 +13,8 @@ Gonzalo Turri
 ## Capturas
 
 ![juego](juego.jpg)
+
+
 ![over](gameOver.jpg)
 
 ## Reglas de Juego / Instrucciones
