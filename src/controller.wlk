@@ -79,7 +79,7 @@ object controller {
 		manzana.renovarPosicion()
 		game.addVisual(manzana)
 		
-		game.onTick(6000,"aparecer fruta especial",{
+		game.onTick(4000,"aparecer fruta especial",{
 			constructores.anyOne().apply()
 			game.addVisual(frutaActiva)
 		})
