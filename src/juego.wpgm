@@ -1,8 +1,16 @@
 import wollok.game.*
-import pepita.*
+import controller.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("WOLLOK SNAKE")
+	game.ground("fondo7.jpg")
+	
+	controller.inicializar()
+		
+	controller.empezarJuego()
+	
 	game.start()
+	
 }
+
+
