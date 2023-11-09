@@ -34,9 +34,7 @@ object snake {
 	}
 	
 	method direccion(dir) {
-		if (direccion.puedeMoverseHacia(dir)) {
 			direccion = dir
-		}
 	}
 	
 	method mover() {
